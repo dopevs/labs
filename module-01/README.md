@@ -1,5 +1,5 @@
-## Module 1 : Introduction to Containers and Docker
-### Setting up Docker on a Linux host
+# Module 1 : Introduction to Containers and Docker
+## Setting up Docker on a Linux host
 > Linux
 
 #### Set up the repository
@@ -60,8 +60,8 @@ sudo systemctl disable containerd.service
 
 [Download docker desktop for windows here](https://docs.docker.com/desktop/install/windows-install/)
 
-### Building and managing Docker images
-
+## Building And Managing Docker Images
+### Part-1 : Building Docker Images 
 #### Requirements
 - app.py
 - Dockerfile
@@ -85,4 +85,65 @@ docker ps -a
 Access Application
 ```
 curl http://localhost:5000
+```
+### Part-2 : Managin Docker Images
+Access docker container
+```
+docker exec -it <container_name> <command>
+```
+Stops a running container
+```
+docker stop <container_name>
+```
+Starts a stopped container
+```
+docker start <container_name>
+```
+Restart a running container
+```
+docker restart <container_name>
+```
+Lists all running containers
+```
+docker ps
+```
+Lists all containers, including stopped ones
+```
+docker ps -a
+```
+Removes a stopped container
+```
+docker rm <container_name>
+```
+Forcefully removes a running container
+```
+docker rm -f <container_name>
+```
+Displays the logs of a container
+```
+docker logs <container_name>
+```
+Displays detailed information about a container
+```
+docker inspect <container_name>
+```
+Displays resource usage statistics for all running containers
+```
+docker stats
+```
+Renames a container
+```
+docker rename <old_container_name> <new_container_name>
+```
+Pauses a running container
+```
+docker pause <container_name>
+```
+Unpauses a paused container
+```
+docker unpause <container_name>
+```
+Displays the processes running in a container
+```
+docker top <container_name>
 ```
