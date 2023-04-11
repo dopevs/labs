@@ -71,7 +71,7 @@ Clone this repo
 git clone https://github.com/dopevs/labs.git
 ```
 
->Example-01
+>Example-01 : Basic Dockerfile
 
 Change directory to example one
 ```
@@ -97,7 +97,7 @@ Access Application
 ```
 curl http://localhost:5000
 ```
->Example-02
+>Example-02 : Dockerfile with custom env
 
 Change directory to example two
 ```
