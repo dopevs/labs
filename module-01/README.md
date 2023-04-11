@@ -197,3 +197,26 @@ Displays the processes running in a container
 ```
 docker top <container_name>
 ```
+## Working With Docker Hub Registry
+Docker Hub Login
+```
+docker login
+```
+Docker Hub Logout
+```
+docker logout
+```
+Push Local Image To Docker Hub
+
+Tag image
+```
+docker tag <local-image> <docker-hub-username>/<repository-name>:<tag>
+```
+Push image
+```
+docker push <docker-hub-username>/<repository-name>:<tag>
+```
+Pull Docker Image From Docker Hub
+```
+docker pull <image-name>
+```
