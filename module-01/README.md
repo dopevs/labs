@@ -66,6 +66,17 @@ sudo systemctl disable containerd.service
 - app.py
 - Dockerfile
 
+Clone this repo
+```
+git clone https://github.com/dopevs/labs.git
+```
+
+>Example-01
+
+Change directory to example one
+```
+cd module-01/example-01
+```
 Build Docker Image
 ```
 docker build -t hello-world:v1.0.0 .
@@ -80,12 +91,43 @@ docker run -p 5000:5000 hello-world:v1.0.0
 ```
 Check Docker Container
 ```
-docker ps -a
+docker ps
 ```
 Access Application
 ```
 curl http://localhost:5000
 ```
+>Example-02
+
+Change directory to example two
+```
+cd module-01/example-02
+```
+Set Port
+```
+PORT=8080
+```
+Build Docker Image
+```
+docker build -t hello-world:v1.0.1 --build-arg PORT=$PORT .
+```
+Check Docker Image
+```
+docker images | grep hello-world
+```
+Run Docker Container from previously created image
+```
+docker run -p $PORT:$PORT hello-world:v1.0.1
+```
+Check Docker Container
+```
+docker ps
+```
+Access Application
+```
+curl http://localhost:$PORT
+```
+
 ### Part-2 : Managin Docker Images
 Access docker container
 ```
