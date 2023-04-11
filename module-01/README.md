@@ -71,7 +71,7 @@ Clone this repo
 git clone https://github.com/dopevs/labs.git
 ```
 
->Example-01 : Basic Dockerfile
+#### Example-01 : Basic Dockerfile
 
 Change directory to example one
 ```
@@ -89,15 +89,19 @@ Run Docker Container from previously created image
 ```
 docker run -p 5000:5000 hello-world:v1.0.0
 ```
+Run Docker Container as background process
+```
+docker run -d -p 5000:5000 hello-world:v1.0.0
+```
 Check Docker Container
 ```
-docker ps
+docker ps | grep hello-world
 ```
 Access Application
 ```
 curl http://localhost:5000
 ```
->Example-02 : Dockerfile with custom env
+#### Example-02 : Dockerfile with custom env
 
 Change directory to example two
 ```
@@ -119,9 +123,13 @@ Run Docker Container from previously created image
 ```
 docker run -p $PORT:$PORT hello-world:v1.0.1
 ```
+Run Docker Container as background process
+```
+docker run -d -p $PORT:$PORT hello-world:v1.0.1
+```
 Check Docker Container
 ```
-docker ps
+docker ps | grep hello-world
 ```
 Access Application
 ```
