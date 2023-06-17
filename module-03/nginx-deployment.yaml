@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: nginx-app
+  name: nginx-app
+  namespace: module-03
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx-app
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: nginx-app
+    spec:
+      initContainers:
+      - name: busybox
+        image: busybox:1.28
+        command: ['sh', '-c', 'echo testing init container!! && sleep 60']
+      containers:
+      - image: nginx:stable-alpine
+        name: nginx
+        resources: {}
+---
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  creationTimestamp: null
+  name: nginx-app
+  namespace: module-03
+spec:
+  maxReplicas: 10
+  minReplicas: 4
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: nginx-app
+  targetCPUUtilizationPercentage: 70
