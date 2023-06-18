@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    layer: frontend
+  name: frontend
+  namespace: test
+spec:
+  selector:
+    matchLabels:
+      layer: frontend
+  template:
+    metadata:
+      labels:
+        layer: frontend
+    spec:
+      containers:
+      - image: nginx:stable-alpine
+        imagePullPolicy: IfNotPresent
+        name: nginx
+        resources: {}
+

@@ -1,0 +1,12 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: frontend-all-deny
+  namespace: test
+spec:
+  podSelector: {} # All pods within frontend namespace
+  egress: # outgoing traffic
+  ingress: # incoming traffic
+  policyTypes:
+  - Egress
+  - Ingress

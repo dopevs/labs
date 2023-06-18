@@ -1,0 +1,39 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: nginx-ingress
+  namespace: test
+  annotations:
+    kubernetes.io/ingress.class: 'nginx'
+    cert-manager.io/cluster-issuer: 'letsencrypt-cluster-issuer'
+    nginx.ingress.kubernetes.io/proxy-body-size: '50m'
+spec:
+  tls:
+  - hosts:
+    - frontend.dopevs.engineer
+    secretName: nginx-ingress-tls
+  rules:
+  - host: frontend.dopevs.engineer
+    http:
+      paths:
+      - path: /test
+        pathType: Prefix
+        backend:
+          service:
+            name: frontend
+            port:
+              number: 80
+      - path: /movies
+        pathType: Prefix
+        backend:
+          service:
+            name: frontend
+            port:
+              number: 80
+      - path: /songs
+        pathType: Prefix
+        backend:
+          service:
+            name: frontend
+            port:
+              number: 80

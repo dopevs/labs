@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: db-allow-from-backend
+  namespace: db
+spec:
+  podSelector: # target resource
+    matchLabels:
+      app: db
+  ingress:
+  - from: # des resource
+    - namespaceSelector:
+        matchLabels:
+          layer: backend
+    - podSelector:
+        matchLabels:
+          app: backend
+    ports:
+    - protocol: TCP
+      port: 80
+  policyTypes:
+  - Ingress
