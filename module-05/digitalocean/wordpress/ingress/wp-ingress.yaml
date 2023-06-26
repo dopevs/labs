@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: wp-ingress
+  namespace: wordpress
+  annotations:
+    kubernetes.io/ingress.class: 'nginx'
+    cert-manager.io/cluster-issuer: 'letsencrypt-cluster-issuer'
+    nginx.ingress.kubernetes.io/proxy-body-size: '50m'
+spec:
+  tls:
+  - hosts:
+    - wp.dopevs.engineer
+    secretName: nginx-ingress-tls
+  rules:
+  - host: wp.dopevs.engineer
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: wordpress
+            port:
+              number: 80

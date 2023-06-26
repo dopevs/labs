@@ -1,0 +1,15 @@
+allowVolumeExpansion: true
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  creationTimestamp: "2023-06-24T04:16:34Z"
+  labels:
+    c3.doks.digitalocean.com/component: csi-controller-service
+    c3.doks.digitalocean.com/plane: data
+    doks.digitalocean.com/managed: "true"
+  name: do-block-storage-retain
+  resourceVersion: "316"
+  uid: b96733fa-5cf0-49a8-bab3-92a822f5eddf
+provisioner: dobs.csi.digitalocean.com
+reclaimPolicy: Retain
+volumeBindingMode: Immediate
