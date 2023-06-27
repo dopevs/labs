@@ -1,2 +1,2 @@
-# Master Kubernetes Administration with Docker labs
+# Master Kubernetes Administration with labs
 
